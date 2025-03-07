@@ -13,6 +13,10 @@ const port = 3000;
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.status(200).json({success: true, message: "Hello World"});
+})
+
 app.post('/api/data', (req: Request, res: Response) => {
     const data = req.body;
 
@@ -24,7 +28,7 @@ app.post('/api/data', (req: Request, res: Response) => {
                 console.log(response.error);
                 return res.status(500).json({error: response.error, success: false});
             }
-            return res.status(200).json({data: response.data, success: true})
+            return res.status(200).json({success: true})
         })
 });
 
